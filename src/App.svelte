@@ -1,10 +1,24 @@
 <script>
-	export let name;
+	let name = "John Doe";
+	let points =  10;
+
+	const addOne = () => points += 1;
+	const subtractOne = () => points -= 1;
+	let showControls = false;
+	const toggleControls  = () => showControls = !showControls;
 </script>
 
 <main>
 	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<button on:click={toggleControls}>
+		{#if showControls} Hide controls {:else}Show controls{/if}
+	</button>
+	<p>You have {points} points.</p>
+	{#if showControls}
+	<button on:click={addOne}>Add point</button>
+	<button on:click={subtractOne}>Subtract point</button>
+	<input type="number" name="" id="" bind:value={points}>
+	{/if}
 </main>
 
 <style>
