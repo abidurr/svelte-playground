@@ -14,6 +14,10 @@
     // States are immutable so you can't push it
     players = [...players, newPlayerData];
   };
+
+  const removePlayer = (e) => {
+    players = players.filter((player) => player.name !== e.detail);
+  };
 </script>
 
 <main>
@@ -23,7 +27,7 @@
     <p>No players</p>
   {:else}
     {#each players as player}
-      <Player name={player.name} points={player.points} />
+      <Player name={player.name} points={player.points} on:removeplayer={removePlayer} />
     {/each}
   {/if}
 </main>

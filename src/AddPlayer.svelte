@@ -22,4 +22,5 @@
   <input type="text" placeholder="Name" bind:value={player.name} />
   <input type="number" placeholder="Points" bind:value={player.points} />
   <input type="submit" value="Add player" />
+  <hr />
 </form>
