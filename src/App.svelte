@@ -1,47 +1,24 @@
 <script>
-	import Navbar from "./Navbar.svelte";
+  import Navbar from "./Navbar.svelte";
+  import Player from "./Player.svelte";
 
-	let name = "John Doe";
-	let points =  10;
-
-	const addOne = () => points += 1;
-	const subtractOne = () => points -= 1;
-	let showControls = false;
-	const toggleControls  = () => showControls = !showControls;
+  let players = [
+    { name: "John Doe", points: 22 },
+    { name: "Jane Doe", points: 12 },
+    { name: "John Titor", points: 15 },
+  ];
 </script>
 
 <main>
-	<Navbar/>
-	<h1>Hello {name}!</h1>
-	<button on:click={toggleControls}>
-		{#if showControls} Hide controls {:else}Show controls{/if}
-	</button>
-	<p>You have {points} points.</p>
-	{#if showControls}
-	<button on:click={addOne}>Add point</button>
-	<button on:click={subtractOne}>Subtract point</button>
-	<input type="number" name="" id="" bind:value={points}>
-	{/if}
+	<Navbar />
+  {#if players.length === 0}
+    <p>No players</p>
+  {:else}
+    {#each players as player}
+      <Player name={player.name} points={player.points} />
+    {/each}
+  {/if}
 </main>
 
 <style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
-
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
 </style>
