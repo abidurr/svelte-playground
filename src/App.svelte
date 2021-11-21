@@ -1,4 +1,6 @@
 <script>
+	import Navbar from "./Navbar.svelte";
+
 	let name = "John Doe";
 	let points =  10;
 
@@ -9,6 +11,7 @@
 </script>
 
 <main>
+	<Navbar/>
 	<h1>Hello {name}!</h1>
 	<button on:click={toggleControls}>
 		{#if showControls} Hide controls {:else}Show controls{/if}
